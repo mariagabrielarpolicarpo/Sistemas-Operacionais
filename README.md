@@ -53,3 +53,14 @@ Ex: controle do projetor
 - Código de inicialização: roda ao ligarmos à máquina, configura o hardware para ser utilizado, inicializa o software (variáveis, estruturas de dados, funções)
 
 - O driver nada mais é do que um software, como uma biblioteca só irá carregar as funções se alguma função é utilizada, assim também funciona o driver. 
+
+- Aplicativos: fornecem pro usuário aquilo que ele quer, seja desenhar, jogar. Mas existem os utilitários como powershell. A interface é um utilitário.
+Exemplo de utilitários: windows explorer, powershell, painel de controle, compactador de arquivos, ferramenta de backup.
+
+## Gerenciamento = Políticas + Mecanismos
+
+- Filosofia: separar políticas dos mecanismos.
+- Políticas:
+  - Algoritmo de alto nível para tomar decisões abstratas: decidir a quantidade de memória para cada aplicação, o próximo pacote de rede a enviar, etc.
+  - As políticas devem ser independentes dos mecanismos existentes.
+  - Deve-se ter uma interface de configuração que irá criar as regras e implementar uma política
