@@ -50,4 +50,35 @@ Ex: controle do projetor
 - Núcleo/kernel: o executável, binário do SO. Vai estar na memória rodando as tarefas.
 - Código de inicialização: roda ao ligarmos à máquina, configura o hardware para ser utilizado, inicializa o software (variáveis, estruturas de dados, funções)
 
-- O driver nada mais é do que um software, como uma biblioteca só irá carregar as funções se alguma função é utilizada, assim também funciona o driver. 
+- O driver nada mais é do que um software, como uma biblioteca só irá carregar as funções se alguma função é utilizada, assim também funciona o driver.
+
+
+## Sistemas em Camadas
+- O desempenho diminui, pois até chegar no núcleo é necessário passar por várias camadas
+
+## Sistemas Micro-Núcleo 
+- O núcleo é pequeno e compacto, como a semente do abacate. É um software pequeno com poucas funcionalidades, com a expectativa de que seja robusta e
+sobreviva a falhas na camada externa. Como o Minix3.
+
+Nível de núcleo: 
+Nível de sistema: tem acesso completo aos recursos do hardware. 
+Nível de usuário: acesso limitado a esses recursos.
+
+## Virtualização: Simulação de um sistema, Fingimento
+
+Um ambiente de máquina virtual consiste de três partes básicas: 
+
+- Sistema hospedeiro: contém os recursos reais de hardware e software do sistema. 
+- Sistema convidado
+- Hipervisor: é o monitor
+
+
+### Contêineres
+
+- É a virtualização do espaço de usuário, de kernel, de SO.
+- espaço de usuário dividido em domínios isolados
+- cada contêiner tem seus próprios recursos como usuários, processos, semáforos, árvores de diretórios e arquivos, interfaces de rede.
+- cada contêiner tem seus próprios namespaces (uid, pid,ip)
+- vantagem: versões diferentes de um mesmo software rodando na mesma máquina
+
+
