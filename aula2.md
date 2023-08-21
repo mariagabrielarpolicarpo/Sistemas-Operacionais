@@ -72,3 +72,23 @@ Sistemas Operacionais: Conceitos e Mecanismos cap. 5 – pg. 52
 de início, tempo de processamento já decorrido, volume de dados lidos/escritos,
 etc.).
 
+- O despacher é uma das poucas coisas no SO que é implementado em assembly.
+
+## Processos
+- é um contêiner de cursos utilizados por uma ou mais tarefas por sua execução.
+- os processos são isolados entre si pelos mecanismos de proteção providos pelo hardware (isolamento de áreas de memória, níveis de operação e chamadas de sistema).
+- benefícios: segurança e robustez. Se ocorrer um erro, ele vai ficar isolado ali naquele contêiner.
+
+ ### Criação de Processos
+ - processos são criados através de chamadas de sistemas, cada SO tem as suas. Ex: Padrão POSIX
+ - windows: createprocess(): cria um novo processo, informando o nome do arquivo contendo o código a executar
+ - unix: fork(): duplica o processo atual ; execve(file):
+
+## Threads 
+- são cada um dos fluxo de execução operando dentro de um sistema ou de um núcleo operacional.
+
+### Tipos
+- threads de usuário: cada um dos fluxos de execução dentro de um processo, geralmente associadas à execução da aplicação.
+- threas de núcleo: cada um dos fluxos de execução dentro de um núcleo. Pode representar fluxos de usuários ou atividades internas do núcleo.
+
+- Existem três modelo de implantação:
