@@ -92,3 +92,26 @@ etc.).
 - threas de núcleo: cada um dos fluxos de execução dentro de um núcleo. Pode representar fluxos de usuários ou atividades internas do núcleo.
 
 - Existem três modelo de implantação:
+
+### Modelos de Threads N:1 
+
+- biblioteca para suportar as threads em sistemas antigos.
+- gerenciamento sem envolvimento do núcleo.
+- muito utilizado por ser fácil e de leve implantação.
+- ideal para aplicações com milhares/milhôes de threads
+- ponto negativo: se der erro em uma thread, trava o programa inteiro.
+
+### Modelos de Threads 1:1
+- gerência de threads incorporadas ao núcleo, o núcleo tem controle sobre tudo, ele pode parar uma thread mal comportada se quiser
+- cada thread de usuário é mapeada em uma thread de núcleo
+- as threads são escalonadas de forma independente, podendo usar vários processadores
+- é a implementação mais frequente nos sistemas atuais
+- ponto negativo: é pouco escalável, no máximo centenas ou alguns milhares de threads.
+
+### Modelos de Threads N:M 
+- parte do escalonamento fica no gerenciador e a outra parte vai para a aplicação
+- modelo híbrido: agrega características de ambos os modelos.
+- uma biblioteca gerencia um conjunto de threads do usuário (dentro do processo)
+- as threads de usuário são mapeadas em uma ou mais threads do núcleo.
+- o número de threads do núcleo é ajustado dinamicamente conforme a demanda da aplicação
+- ponto negativo: maior complexidade de implementação; maior custo de gerência das threads do núcleo. 
