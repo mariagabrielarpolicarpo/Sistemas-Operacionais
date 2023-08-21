@@ -114,4 +114,62 @@ etc.).
 - uma biblioteca gerencia um conjunto de threads do usuário (dentro do processo)
 - as threads de usuário são mapeadas em uma ou mais threads do núcleo.
 - o número de threads do núcleo é ajustado dinamicamente conforme a demanda da aplicação
-- ponto negativo: maior complexidade de implementação; maior custo de gerência das threads do núcleo. 
+- ponto negativo: maior *complexidade* de implementação; maior *custo* de gerência das threads do núcleo. 
+
+## Processos vs Threads 
+- se for importante segurança e tolerâncias falhas eu uso multi processos
+- se é necessário trocar uma grande quantidade de informação é melhor usar o sistema multi thread e se preocupar com a segurança
+
+
+## Escalonamento de tarefas
+- é o componente que define as ordens de escalonamento, é quem ordena a fila de prontos e escolhe a tarefa que vai executar
+
+### Tipos de tarefas
+- de tempo real: é necessária a previsibilidade das respostas
+- interativas: interagem com alguém, seja um usuário, um sistema
+- em lote (batch): não tem interação, são massivamente computacionais, ex: fechamento de folha de pagamento, codificação de um vídeo
+
+Existe outra possibilidade de classificação 
+- CPU-bound tasks: são tarefas que tem bastante computação 
+- i/o bound: tem bastante interatividade com dispositivos, discos
+
+### Objetivos e métricas do escalonador de tarefas
+- O administrador de SO deve escolher o que priorizar.
+
+Métricas para avaliar diferentes escalonadores: 
+- tempo de vida: tempo decorrido entre a criação de uma tarefa e seu encerramento
+- tempo de espera: tempo perdido pela tarefa na fila de prontas
+- tempo de resposta: é o tempo decorrido entre a chegada de um evento ao sistema e o resultado imediato de seu processamento
+
+## Tipos de escalonadores 
+- Escalonador preemptivo: a cada interrupção, exceção ou chamada de sistema, o escalonador pode reavaliar as tarefas da fila de prontas e decidir se
+mantém ou substitui a tarefa atualmente em execução.
+
+- Escalonador cooperativo: espera as tarefas terminarem de serem executadas para começar outra. 
+
+- consiste em atribuir o processador à menor (mais curta) tarefa da fila
+de tarefas prontas. Esse algoritmo proporciona os
+menores tempos médios de espera das tarefas.
+A maior dificuldade no uso do algoritmo SJF consiste em estimar a priori a
+duração de cada tarefa, antes de sua execução
+Não tem como estimar por exemplo por quanto tempo um editor de textos será utilizado e por essa razão é pouco utilizado. Ele se torna de grande valia ao ser associado ao Round Robin
+
+- Outro problema associado ao escalonamento SJF é a possibilidade de inanição
+(starvation) das tarefas mais longas. Caso o fluxo de tarefas curtas chegando ao sistema
+seja elevado, as tarefas mais longas nunca serão escolhidas para receber o processador e
+vão literalmente “morrer de fome”, esperando na fila sem poder executar
+
+## Problemas SJF, SRTF
+como definir a duração de uma tarefa? 
+tirando a média de tarefas anteriores que já foram realizadas antes. 
+
+## Prioridades fixas preemptivas 
+problema: como definir as prioridades das tarefas? 
+
+### fatores externos
+- informações providas pelo usuário ou o adm do sistema q o escalonador não pode estimar sozinho
+- classe do usuário (adm, diretor, estagiário), importância da tarefa em si
+
+### fatores internos
+- informações internas do SO, tempo de vida, tempo de espera, tempo para terminar o processo, são prioridades dinâmicas
+
