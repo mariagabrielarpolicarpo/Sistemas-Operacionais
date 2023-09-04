@@ -207,3 +207,8 @@ Requisito: as operações devem executar atomicamente
 - a tarefa é suspensa até que a condição se torne verdadeira.
 - Componentes: semáforo binário, fila de tarefas e operações atômicas
 
+
+## Monitor 
+É uma coisa construída na aplicação usando semáforo ou mutex. 
+- estrutura de sincronização que requisita e libera a seção crítica associada a um recurso, sem que o programador tenha que se preocupar com isso.
+- Componentes: recurso compartilhado, procedimento para acessar essas variáveis, u mmutex usado em cada acesso ao monitor
