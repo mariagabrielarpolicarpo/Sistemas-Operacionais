@@ -41,3 +41,62 @@ Cooperação = comunicação + coordenação
 - capacidade infinita: 
 - capacidade finita: uma quantidade finita de dados pode ser enviada pelo emissor, haverá bloqueio se aquilo que receber estiver vazio, mas nunca haverá bloqueio para quem transmite.
 
+### Confiabilidade dos canais
+- canal confiável: transporta ao destino todos os dados recebidos, respeitando sua integridade e ordem de envio. 
+- canal não confiável: podem ocorrer vários tipos de perdas - de dados, de integridade, de ordem.
+
+### Número de participantes
+
+- 1:1 - há apenas dois elementos que partiicpação da comunicação através do canal. 
+- M:N - vários que transmitem e vários que recebem
+- Canal N:M - mailbox: cada mensagem é recebida por apenas um receptor.
+- Canal de eventos: cada mensagem é recebida por todos os receptores. 
+
+# Mecanismos de comunicação
+
+## Pipes
+
+- Canal de comunicação local entre dois processos(1:1), unidirecional, síncrono, orientado a fluxo, confiável e com capacidade finita
+- liga a saída de um processo à entrada de outro
+- stdin entrada padrão - (scanf, getchar)
+- stdout saída padrão (printf, ...)
+- stdout - saída de erro (perror,...)
+
+- Canal de comunicação local entre dois processos
+- Um processo grava informações e outro lê no pipe.
+- Um pipe tem duas extremidades.
+- Um pipe unidirecional permite que o processo em uma extremidade seja gravado no pipe e permite que o processo na outra extremidade leia do pipe.
+- Um pipe bidirecional permite que um processo leia e escreva do final do pipe.
+- Um pipe anônimo é um pipe unidirecional sem nome que normalmente transfere dados entre um processo pai e um processo filho.
+- Um pipe nomeado é unidirecional ou bidirecional para comunicação entre o servidor de pipe e um ou mais clientes de pipe. Todas as instâncias de um pipe nomeado compartilham o mesmo nome de pipe, mas cada instância tem seus próprios buffers e identificadores e fornece um canal separado para comunicação cliente/servidor. 
+
+### Pipes nomeados (FIFOs)
+
+- cria um pipe nomeado, cujo nome é/tmp/pipe
+$ mkfifo /tmp/pipe
+
+- mostra o nome do pipe no diretório
+$ ls -l /tmp/pipe
+prw-rw-r-- 1 maziero maziero 0 sept. 6 18:14 pipe|
+
+- envia dados (saída do comando date) para o pipe nomeado
+$ date > /tmp/pipe
+
+ - EM OUTRO TERMINAL, recebe dados do pipe nomeado
+ $ cat < /tmp/pipe
+ Thu Sep 6 2018, 18:01:50 (UTC+0200)
+
+- remove o pipe nomeado
+16 $ rm /tmp/pipe
+
+
+## Fila de mensagens: POSIX
+
+- fila de mensagens no linu: mecanismo de comunicação entre vários procesoss, confiáveis, orientadas a mensagens e com capacidade finita. 
+- implementar o conceito de mailbox
+
+## Memória compartilhada 
+- processos leem e escrevem na mesma área de memória
+- normalmente proibido pelos mecanismos de hardware
+- núcleo ajusta mapas de memória para criar área compartilhada
+
