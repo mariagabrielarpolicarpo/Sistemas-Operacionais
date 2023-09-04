@@ -178,3 +178,32 @@ depender somente das tarefas que estão tentando usá-la.
 - Dependência: na solução por alternância, tarefas desejando acessar a seção crítica
 podem ser impedidas de fazê-lo por tarefas que não têm interessa na seção
 crítica naquele momento.
+
+
+# 11- Mecanismos de Coordenação
+
+## Semáforos
+Propriedade: eficiência, justiça, independência
+### Operações atômicas
+
+Down(s)
+- solicita acesso à seção crítica
+- decrementa o contador do semáforo
+- suspende a tarefa enquanto ela espera, caso o valor do contador seja menor a zero.
+
+Up(s)
+- libera a seção crítica
+- incrementa o contador do semáforo
+- acordar a primeira tarefa que estiver aguardando
+
+Requisito: as operações devem executar atomicamente
+
+
+## Mutexes
+- semáfora simplificado: livre(1) ou ocupado (0)
+
+## Variável de condição 
+- representa uma condição que é aguardada por uma tarefa.
+- a tarefa é suspensa até que a condição se torne verdadeira.
+- Componentes: semáforo binário, fila de tarefas e operações atômicas
+
