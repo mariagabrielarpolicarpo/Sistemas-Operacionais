@@ -1,8 +1,8 @@
-# Conceitos : Cooperações entre tarefas
+# Cooperações entre tarefas
 
-As tarefas em um sistema multi-tarefa precisam cooperar. Para conseguirem cooperar é necessário que haja comunicação entre elas. 
+- As tarefas em um sistema multi-tarefa precisam cooperar. Para conseguirem cooperar é necessário que haja comunicação entre elas. 
 
-A eficiência do sistema multitarefa vem do uso dos recursos. A eficiência está relacionada a menos tempo ocioso. 
+- A eficiência do sistema multitarefa vem do uso dos recursos. A eficiência está relacionada a menos tempo ocioso. 
 
 ## Motivações 
 
@@ -103,3 +103,78 @@ $ date > /tmp/pipe
 - normalmente proibido pelos mecanismos de hardware
 - núcleo ajusta mapas de memória para criar área compartilhada
 
+
+# Coordenação entre tarefas
+
+Execução concorrente - exemplo: operação de depósito em uma conta bancária 
+
+Race conditions [adicionar]
+
+### Condições de disputa são erros dinâmicos: 
+- não aparecem no código fonte
+- só se manifestam durante a execução
+- são difíceis de detectar
+- podem ocorrer raramente ou nunca
+- sua depuração pode ser muito complexa
+
+### Condições de Bernstein 
+- formalizam as condições de disputa
+- t1 e t2: duas tarefas executando em paralello
+- r(t): conjunto de variáveis lidas por t
+- w(t): conjunto de variáveis escritas por t
+
+
+               R(t1) ∩ W(t2) = ∅ (t1 não lê as variáveis escritas por t2)
+  t1 || t2 ⇐⇒  R(t2) ∩ W(t1) = ∅ (t2 não lê as variáveis escritas por t1)
+               W(t1) ∩ W(t2) = ∅ (t1 e t2 não escrevem nas mesmas variáveis)
+
+  ### Seções críticas
+  - São trechos de código de cada tarefa que acessa dados compartilhados, onde podem ocorrer condições de disputa.
+  - Exclusão mútua: impedir o entrelaçamento de seções críticas, de modo que apenas uma tarefa esteja na seção crítica a cada instante.
+ 
+  ### Exclusão mútua
+  - Cada seção crítica i pode ser associada a um identificador csi.
+ 
+  - Primitivas de controle:
+  - a) enter: a tarefa deseja entrar na seção crítica
+  - b) leave: a tarefa está saindo da seção crítica
+  - A primitiva enter é bloqueante: t(a) fica esperando até que cs(i) esteja livre.
+
+é necessário avisar que a tarefa está entrando e saindo:
+
+void depositar (long conta, long *saldo, long valor)  
+2 {  
+3 enter (conta) ; // entra na seção crítica "conta"  
+4 (*saldo) += valor ; // usa as variáveis compartilhadas  
+5 leave (conta) ; // sai da seção crítica  
+6 }  
+
+
+- Exclusão mútua: somente uma tarefa pode estar dentro da seção crítica em cada instante.
+- Espera limitada: uma tarefa que aguarda acesso a uma seção crítica deve recebê-la em tempo finito.
+- Independência de outras tarefas: a decisão sobre o uso de uma seção crítica deve
+depender somente das tarefas que estão tentando usá-la.
+- Independência de fatores físicos: mecanismo não deve depender da velocidade do sistema, de temporizações, do número de processadores ou de outros fatores físicos.
+
+## Inibição de interrupções 
+
+- inibir as interrupções durante acesso às seções críticas. 
+- impede as trocas de contexto dentro da seção crítica.
+- desabilitar algumas interrupções, mas deixar outras funcionando.
+
+### Solução: alternância de uso 
+
+- Usar uma variável turno para indicar quem pode entrar na seção crítica
+
+
+### Operações atômicas
+
+- Instruções de máquinas específicas: a) tsl - test and set lock (testa um valor e o configura) b) cas - compare and swap c) xchg - exchange
+
+### Quais os problemas destas implementações? 
+
+- Ineficiência: processador testa continuamente uma condição (espera ocupada) 
+- Injustiça: não garantem ordem no acesso à seção crítica 
+- Dependência: na solução por alternância, tarefas desejando acessar a seção crítica
+podem ser impedidas de fazê-lo por tarefas que não têm interessa na seção
+crítica naquele momento.
