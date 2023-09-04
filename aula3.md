@@ -63,7 +63,7 @@ Cooperação = comunicação + coordenação
 - stdout - saída de erro (perror,...)
 
 ### Pipes IPC Windows
-- Canal de comunicação local entre dois processos
+- Canal de comunicação local entre vários processos
 - Um processo grava informações e outro lê no pipe.
 - Um pipe tem duas extremidades.
 - Um pipe unidirecional permite que o processo em uma extremidade seja gravado no pipe e permite que o processo na outra extremidade leia do pipe.
