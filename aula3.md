@@ -68,7 +68,9 @@ Cooperação = comunicação + coordenação
 - Um pipe unidirecional permite que o processo em uma extremidade seja gravado no pipe e permite que o processo na outra extremidade leia do pipe.
 - Um pipe bidirecional permite que um processo leia e escreva do final do pipe.
 - Um pipe anônimo é um pipe unidirecional sem nome que normalmente transfere dados entre um processo pai e um processo filho.
-- Um pipe nomeado é unidirecional ou bidirecional para comunicação entre o servidor de pipe e um ou mais clientes de pipe. Todas as instâncias de um pipe nomeado compartilham o mesmo nome de pipe, mas cada instância tem seus próprios buffers e identificadores e fornece um canal separado para comunicação cliente/servidor. 
+- Um pipe nomeado é unidirecional ou bidirecional para comunicação entre o servidor de pipe e um ou mais clientes de pipe.
+Todas as instâncias de um pipe nomeado compartilham o mesmo nome, mas cada instância tem seus próprios buffers
+e identificadores e fornece um canal separado para comunicação cliente/servidor. 
 
 ### Pipes nomeados (FIFOs)
 
