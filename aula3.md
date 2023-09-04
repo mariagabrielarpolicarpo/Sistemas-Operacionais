@@ -62,6 +62,7 @@ Cooperação = comunicação + coordenação
 - stdout saída padrão (printf, ...)
 - stdout - saída de erro (perror,...)
 
+### Pipes IPC Windows
 - Canal de comunicação local entre dois processos
 - Um processo grava informações e outro lê no pipe.
 - Um pipe tem duas extremidades.
@@ -74,22 +75,22 @@ e identificadores e fornece um canal separado para comunicação cliente/servido
 
 ### Pipes nomeados (FIFOs)
 
-- cria um pipe nomeado, cujo nome é/tmp/pipe
-$ mkfifo /tmp/pipe
+- cria um pipe nomeado, cujo nome é/tmp/pipe  
+$ mkfifo /tmp/pipe  
 
-- mostra o nome do pipe no diretório
-$ ls -l /tmp/pipe
-prw-rw-r-- 1 maziero maziero 0 sept. 6 18:14 pipe|
+- mostra o nome do pipe no diretório  
+$ ls -l /tmp/pipe  
+prw-rw-r-- 1 maziero maziero 0 sept. 6 18:14 pipe  
 
-- envia dados (saída do comando date) para o pipe nomeado
-$ date > /tmp/pipe
+- envia dados (saída do comando date) para o pipe nomeado  
+$ date > /tmp/pipe  
 
- - EM OUTRO TERMINAL, recebe dados do pipe nomeado
- $ cat < /tmp/pipe
- Thu Sep 6 2018, 18:01:50 (UTC+0200)
+ - EM OUTRO TERMINAL, recebe dados do pipe nomeado  
+ $ cat < /tmp/pipe  
+ Thu Sep 6 2018, 18:01:50 (UTC+0200)  
 
-- remove o pipe nomeado
-16 $ rm /tmp/pipe
+- remove o pipe nomeado  
+16 $ rm /tmp/pipe  
 
 
 ## Fila de mensagens: POSIX
