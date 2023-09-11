@@ -87,5 +87,5 @@ como detectar?
 
 como corrigir em tempo de execução? 
 - eliminar uma das duas tarefas. Mas qual tarefa eliminar?
-- é melhor retroceder tarefas, retornando o sistema um estado seguro.
+- é melhor retroceder tarefas, retornando o sistema um estado seguro. Como dar rollback em banco de dados e voltar ao estado inicial. 
 
