@@ -8,16 +8,6 @@ Conceitos básicos: tipos de memória, memória em processo, alocação de vari�
 - Cada dispositivo possui características diferentes entre si.
 
 - Volátil: megabytes, kb - mb ,kb
-- Não volátil: gigabytes pra baixo (tera, peta etc)# Conteúdo
-Conceitos básicos: tipos de memória, memória em processo, alocação de variáveis
-
-## Tipos de Memória 
-
-- Um computador possui diversos dispositivos de armazenamento de dados como registradores, caches, RAM, SSD/HD, pendrive
-
-- Cada dispositivo possui características diferentes entre si.
-
-- Volátil: megabytes, kb - mb ,kb
 - Não volátil: gigabytes pra baixo (tera, peta etc)
 
 Se eu preciso do dado por muito tempo, o dado deve estar armazenado na memória não volátil. 
