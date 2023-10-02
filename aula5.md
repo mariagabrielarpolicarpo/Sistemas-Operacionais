@@ -183,3 +183,20 @@ Memória virtual:
   - quantidade máxima de memória é limitada
  
  
+# Espaço de Endereçamento
+
+É a quantidade de enderçeos desde o endereço 0 até o máximo que eu posso representar naquela arquitetura, é dividido em duas partes: 
+    - Espaço do procesos: o início do espaço de endereçamento é do processo. 
+    - Espaço do núcleo: o final de espaço de endereçamento é do núcleo.
+
+## Alocadores de Memória 
+
+Eu tenho alocação física. 
+
+Problemas: 
+    - manter uma ou mais áreas de memória. 
+    - atender pedidos de alocação e liberação de blocos. 
+    - otimizar o uso da memória.
+    - evitar/minimizar a fragmentação.
+
+    
