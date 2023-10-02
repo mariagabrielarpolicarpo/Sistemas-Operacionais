@@ -15,7 +15,7 @@ Para realizar uma operação (dados de trabalho) é necessário que o dado estej
 
 Para fazer as operações ficarem mais rápidas, os dados são armazenados na memória cache. Então há cópia de dados em várias partes diferentes. 
 
-## Memória de um procesos
+## Memória de um processos
 
 Todo processo possui 5 áreas distintas de memória
 
