@@ -174,4 +174,12 @@ Memória virtual:
   Usa endereços lógicos bidimensionais [S:O]
   - S: número do segmento na tabela do processo.
   - Vantagens: flexibilidade: alocação das áreas conforme a necessidade.
-  - Desvantagens: mais complexo de implementar, são necessários mais acessos à memória RAM. 
+  - Desvantagens: mais complexo de implementar, são necessários mais acessos à memória RAM.
+
+- Por páginas:
+  - vantagens: flexibilidade
+  - desvantagens: são necessários mais acessos à memória RAM.
+  - número de páginas por processo é limitado ao tamanho de tabela de páginas
+  - quantidade máxima de memória é limitada
+ 
+ 
